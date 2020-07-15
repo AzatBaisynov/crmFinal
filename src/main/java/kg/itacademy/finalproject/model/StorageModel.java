@@ -13,6 +13,14 @@ public class StorageModel {
     private Integer count;
     private Integer pricePerUnit;
     private Integer totalPrice;
+    private String productPath;
+
+    public StorageModel(String productName, Integer count, Integer pricePerUnit, Integer totalPrice) {
+        this.productName = productName;
+        this.count = count;
+        this.pricePerUnit = pricePerUnit;
+        this.totalPrice = totalPrice;
+    }
 
     @Override
     public String toString() {

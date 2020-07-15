@@ -58,7 +58,7 @@ public class TelegramServiceImpl implements TelegramService {
     public List<StorageModel> getStorages(TelegramRegistration tg, LocalDate date) {
         Long companyId = tg.getId();
         List<User> user = userService.getAllByCompanyId(companyId);
-        return storageService.getFullList(user.get(0).getLogin(), date);
+        return storageService.getFullList(user.get(0).getLogin());
     }
 
     @Override

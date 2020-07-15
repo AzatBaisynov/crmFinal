@@ -15,9 +15,7 @@ import java.time.LocalDate;
 public class FinalprojectApplication {
 
     public static void main(String[] args) {
-        LocalDate date = LocalDate.now();
 
-        System.out.println(date);
         ApiContextInitializer.init();
         TelegramBotsApi telegramBotsApi = new TelegramBotsApi();
         try {

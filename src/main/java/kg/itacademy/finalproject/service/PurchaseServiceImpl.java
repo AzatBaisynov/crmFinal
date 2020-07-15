@@ -22,6 +22,8 @@ public class PurchaseServiceImpl implements PurchaseService {
     private ProductService productService;
     @Autowired
     private StorageService storageService;
+    @Autowired
+    private ImageService imageService;
 
     @Override
     public Purchase create(Purchase purchase) {
@@ -53,7 +55,9 @@ public class PurchaseServiceImpl implements PurchaseService {
                         purchases.get(i).getPrice(),
                         purchases.get(i).getUser().getUserFullName(),
                         purchases.get(i).getPrice() *purchases.get(i).getCount(),
-                        date
+                        date,
+                        imageService.getImagePath(purchases.get(i).getProduct().getName(),
+                                                  purchases.get(i).getCompany().getId())
                         ));
             }
         }

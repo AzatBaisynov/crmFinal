@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.util.EmptyStackException;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -18,6 +19,16 @@ public class PurchaseSalesProductsListModel {
     private String userName;
     private Integer totalPrice;
     private LocalDate date;
+    private String productPath;
+
+    public PurchaseSalesProductsListModel(String productName, Integer count, Integer pricePerUnit, String userName, Integer totalPrice, LocalDate date) {
+        this.productName = productName;
+        this.count = count;
+        this.pricePerUnit = pricePerUnit;
+        this.userName = userName;
+        this.totalPrice = totalPrice;
+        this.date = date;
+    }
 
     @Override
     public String toString() {

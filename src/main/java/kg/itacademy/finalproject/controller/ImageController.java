@@ -10,6 +10,7 @@ import java.security.Principal;
 import java.util.List;
 
 @RestController
+//@CrossOrigin("http://localhost:3000")
 @RequestMapping("/image")
 public class ImageController {
     @Autowired
@@ -29,6 +30,6 @@ public class ImageController {
     public Image create(@RequestParam(name = "image") MultipartFile multipartFile,
                         @RequestParam(name = "productId") String id,
                         Principal principal) {
-        return imageService.saveLocalPath(multipartFile,id);
+        return imageService.saveLocalPath(multipartFile,id, principal.getName());
     }
 }

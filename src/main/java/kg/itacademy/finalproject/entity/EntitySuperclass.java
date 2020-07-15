@@ -1,9 +1,9 @@
 package kg.itacademy.finalproject.entity;
 
-import lombok.Data;
+        import lombok.Data;
 
-import javax.persistence.*;
-import java.time.LocalDateTime;
+        import javax.persistence.*;
+        import java.time.LocalDateTime;
 
 @MappedSuperclass
 @Data

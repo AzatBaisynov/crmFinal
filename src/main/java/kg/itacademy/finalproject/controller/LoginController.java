@@ -9,10 +9,7 @@ import kg.itacademy.finalproject.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 
@@ -23,6 +20,14 @@ public class LoginController {
     private UserService userService;
     @Autowired
     private CompanyService companyService;
+
+    @GetMapping
+    public ResponseEntity<String> getTelegramKey(Principal principal){
+        String key = userService.getTelegramKey(principal.getName());
+        if (key == null) return new ResponseEntity<>("Error", HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(key, HttpStatus.OK);
+    }
+
 
     @PostMapping("/auth")
     public ResponseEntity<String> getToken(@RequestBody LoginModel loginModel) {
@@ -39,10 +44,14 @@ public class LoginController {
         Company company1 = companyService.create(company);
         Long id = company1.getId();
         User user = userService.createUserAndUserRole(registrationModel, id);
+        LoginModel lm = new LoginModel();
+        lm.setLogin(registrationModel.getLogin());
+        lm.setPassword(registrationModel.getPassword());
+        String result = userService.getToken(lm);
         if (user == null){
             return new ResponseEntity<>("Error", HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>("User created! Your telegram key is: " + user.getTelegramKey(), HttpStatus.OK);
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
     @PostMapping("/registration/user")

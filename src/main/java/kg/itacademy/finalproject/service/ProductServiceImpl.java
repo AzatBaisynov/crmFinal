@@ -7,6 +7,7 @@ import kg.itacademy.finalproject.repo.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -51,7 +52,19 @@ public class ProductServiceImpl implements ProductService {
         User user = userService.getByLogin(userName);
         product.setCompany(user.getCompany());
         product.setName(productsModel.getProductName());
+        if (getByNameAndCompanyId(productsModel.getProductName(),user.getCompany().getId()) == null)
         return productRepository.save(product);
+        return null;
+    }
+
+    @Override
+    public List<String> getProductNames(String userName) {
+        User user = userService.getByLogin(userName);
+        Long id = user.getCompany().getId();
+        List<Product> list = productRepository.getAllByCompanyId(id);
+        List<String> returnList = new ArrayList<>();
+        list.forEach(x-> returnList.add(x.getName()));
+        return returnList;
     }
 
 }

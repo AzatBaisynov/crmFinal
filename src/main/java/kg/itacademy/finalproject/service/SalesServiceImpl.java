@@ -25,6 +25,9 @@ public class SalesServiceImpl implements SalesService {
     @Autowired
     private StorageService storageService;
 
+    @Autowired
+    private ImageService imageService;
+
     @Override
     public Sales create(Sales sales) {
         return salesRepository.save(sales);
@@ -47,6 +50,8 @@ public class SalesServiceImpl implements SalesService {
         List<Sales> sales = salesRepository.findAllByCompanyId(companyId);
         List<PurchaseSalesProductsListModel> salesForReturn = new ArrayList<>();
 
+
+
         for(int i = 0; i < sales.size(); i++){
             if(sales.get(i).getDateCreated().toLocalDate().toString().equals(date.toString())){
                 salesForReturn.add(new PurchaseSalesProductsListModel(
@@ -55,7 +60,8 @@ public class SalesServiceImpl implements SalesService {
                         sales.get(i).getPrice(),
                         sales.get(i).getUser().getUserFullName(),
                         sales.get(i).getPrice() * sales.get(i).getCount(),
-                        date));
+                        date,
+                        imageService.getImagePath(sales.get(i).getProduct().getName(), sales.get(i).getCompany().getId())));
             }
         }
         return salesForReturn;

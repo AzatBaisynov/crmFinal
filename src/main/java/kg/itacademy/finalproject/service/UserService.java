@@ -16,4 +16,5 @@ public interface UserService {
     List<User> getAllByCompanyId(Long id);
     User getByTelegramId(String id);
     User createUserByAdmin(String name, RegistrationModel registrationModel);
+    String getTelegramKey(String name);
 }

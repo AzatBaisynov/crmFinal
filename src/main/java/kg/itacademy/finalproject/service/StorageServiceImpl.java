@@ -20,6 +20,9 @@ public class StorageServiceImpl implements StorageService {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private ImageService imageService;
+
     @Override
     public Storage create(Storage storage) {
         return storageRepository.save(storage);
@@ -36,21 +39,20 @@ public class StorageServiceImpl implements StorageService {
     }
 
     @Override
-    public List<StorageModel> getFullList(String userName, LocalDate date) {
+    public List<StorageModel> getFullList(String userName) {
         User user = userService.getByLogin(userName);
         Long companyId = user.getCompany().getId();
         List<Storage> storages = storageRepository.findAllByCompanyIdAndCountGreaterThan(companyId, 0);
         List<StorageModel> storagesForReturn = new ArrayList<>();
 
         for (int i = 0; i < storages.size(); i++){
-            if(storages.get(i).getDateCreated().toLocalDate().toString().equals(date.toString())) {
                 storagesForReturn.add(new StorageModel(
                         storages.get(i).getProduct().getName(),
                         storages.get(i).getCount(),
                         storages.get(i).getCost() / storages.get(i).getCount(),
-                        storages.get(i).getCost()
+                        storages.get(i).getCost(),
+                        imageService.getImagePath(storages.get(i).getProduct().getName(), storages.get(i).getCompany().getId())
                 ));
-            }
         }
         return storagesForReturn;
     }

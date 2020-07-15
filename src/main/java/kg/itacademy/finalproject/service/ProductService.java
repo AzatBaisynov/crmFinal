@@ -13,4 +13,5 @@ public interface ProductService {
     List<Product> getAllByCompanyId(Long id);
     Product getByNameAndCompanyId(String name, Long id);
     Product createByModel(String userName, ProductsModel productsModel);
+    List<String> getProductNames(String userName);
 }

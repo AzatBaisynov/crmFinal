@@ -13,4 +13,13 @@ public class Earning {
     private String productName;
     private Integer earning;
     private LocalDateTime time;
+    private String imagePath;
+
+    public Earning(String productName, Integer earning, LocalDateTime time) {
+        this.productName = productName;
+        this.earning = earning;
+        this.time = time;
+    }
+
+
 }

@@ -105,6 +105,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public String getTelegramKey(String name) {
+        User byLogin = userRepository.getByLogin(name);
+        String key = byLogin.getTelegramKey();
+        if(key == null)
+        return null;
+        return key;
+    }
+
+    @Override
     public List<User> getAllByCompanyId(Long id) {
         return userRepository.findAllByCompanyId(id);
     }

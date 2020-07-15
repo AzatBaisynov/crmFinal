@@ -11,4 +11,11 @@ public class ProductsModel {
     private String productName;
     private Integer countInStorage;
     private Integer totalPrice;
+    private String imagePath;
+
+    public ProductsModel(String productName, Integer countInStorage, Integer totalPrice) {
+        this.productName = productName;
+        this.countInStorage = countInStorage;
+        this.totalPrice = totalPrice;
+    }
 }

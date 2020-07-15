@@ -2,8 +2,10 @@ package kg.itacademy.finalproject.controller;
 
 import kg.itacademy.finalproject.entity.Purchase;
 import kg.itacademy.finalproject.entity.User;
+import kg.itacademy.finalproject.model.PurchaseReturn;
 import kg.itacademy.finalproject.model.PurchaseSalesCreateModel;
 import kg.itacademy.finalproject.model.PurchaseSalesProductsListModel;
+import kg.itacademy.finalproject.service.ProductService;
 import kg.itacademy.finalproject.service.PurchaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,6 +23,9 @@ public class PurchaseController {
     @Autowired
     private PurchaseService purchaseService;
 
+    @Autowired
+    private ProductService productService;
+
     @GetMapping
     public List<Purchase> getAll() {
         return purchaseService.getAll();
@@ -37,12 +42,13 @@ public class PurchaseController {
     }
 
     @GetMapping("/list")
-    public List<PurchaseSalesProductsListModel> getFullList(@RequestParam String date, Principal principal){
+    public PurchaseReturn getFullList(@RequestParam String date, Principal principal){
         LocalDate localDate = LocalDate.parse(date);
         List<PurchaseSalesProductsListModel> fullList = purchaseService.getFullList(principal.getName(), localDate);
-        if(fullList.isEmpty())
-            return null;
-        return fullList;
+        List<String> products = productService.getProductNames(principal.getName());
+        PurchaseReturn pR = new PurchaseReturn(fullList, products);
+
+        return pR;
     }
 
     @PostMapping("/create")

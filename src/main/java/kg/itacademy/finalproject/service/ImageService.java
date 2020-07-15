@@ -10,4 +10,5 @@ public interface ImageService {
     Image getById(Long id);
     List<Image> getAll();
     Image saveLocalPath(MultipartFile image, String id, String login);
+    String getImagePath(String nameProduct, Long companyId);
 }

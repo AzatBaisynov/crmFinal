@@ -11,4 +11,5 @@ import java.util.List;
 public interface StorageRepository extends JpaRepository<Storage, Long> {
     List<Storage> findAllByCompanyIdAndCountGreaterThan(Long id, Integer num);
     Storage findByProduct(Product product);
+    List<Storage> findAllByCompanyId(Long id);
 }

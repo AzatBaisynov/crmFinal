@@ -23,6 +23,9 @@ public class ImageServiceImpl implements ImageService {
     @Autowired
     private ProductService productService;
 
+    @Autowired
+    private UserService userService;
+
 //    @Override
 //    public Image create(MultipartFile image, String id) {
 //        Image image1 = new Image();
@@ -63,22 +66,42 @@ public class ImageServiceImpl implements ImageService {
 //    }
 
 
+
+
     @Override
     public Image saveLocalPath(MultipartFile image, String id, String login) {
-        String name = System.currentTimeMillis() +  image.getOriginalFilename();
-        String pathToPhoto = "C:\\Users\\Азат\\Desktop\\photos\\" + name;
-        Long pId = Long.parseLong(id);
-        File file = new File(pathToPhoto);
-        try {
-            image.transferTo(file);
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (productService.getById(Long.parseLong(id)).getCompany().getId() == userService.getByLogin(login).getCompany().getId()) {
+            String name = System.currentTimeMillis() + image.getOriginalFilename();
+            String pathToPhoto = "C:/Users/Азат/Desktop/frontFinal/easystoragefront/src/Pages/images/" + name;
+            Long pId = Long.parseLong(id);
+            File file = new File(pathToPhoto);
+            try {
+                image.transferTo(file);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Image image1 = new Image();
+            image1.setName(name);
+            image1.setPath(pathToPhoto);
+            image1.setProduct(productService.getById(pId));
+            return imageRepository.save(image1);
         }
-        Image image1 = new Image();
-        image1.setName(name);
-        image1.setPath(pathToPhoto);
-        image1.setProduct(productService.getById(pId));
-        return imageRepository.save(image1);
+        return null;
+    }
+
+    @Override
+    public String getImagePath(String nameProduct, Long companyId) {
+        Long pId = productService.getByNameAndCompanyId(nameProduct, companyId).getId();
+        Image image = imageRepository.getByProduct_Id(pId);
+        if(image == null) {
+            return "./images/photo.jpg";
+        }
+        String path = image.getPath();
+        System.out.println(path);
+        path = path.replace("C:/Users/Азат/Desktop/frontFinal/easystoragefront/src/Pages", ".");
+//        path.replace("\\", "/");
+        System.out.println(path);
+        return path;
     }
 
 

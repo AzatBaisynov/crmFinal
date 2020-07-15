@@ -12,7 +12,7 @@ public interface StorageService {
     Storage create(Storage storage);
     Storage getById(Long id);
     List<Storage> getAll();
-    List<StorageModel> getFullList(String userName, LocalDate date);
+    List<StorageModel> getFullList(String userName);
     Storage getByProduct(Product product);
     List<Storage> getAllByCompanyId(Long id);
     void delete(Storage storage);

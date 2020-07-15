@@ -34,8 +34,7 @@ public class StorageController {
     }
 
     @GetMapping("/list")
-    public List<StorageModel> getFullList(@RequestParam String date, Principal principal){
-        LocalDate localDate = LocalDate.parse(date);
-        return storageService.getFullList(principal.getName(), localDate);
+    public List<StorageModel> getFullList(Principal principal){
+        return storageService.getFullList(principal.getName());
     }
 }
