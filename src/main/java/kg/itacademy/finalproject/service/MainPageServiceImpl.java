@@ -7,11 +7,8 @@ import kg.itacademy.finalproject.entity.User;
 import kg.itacademy.finalproject.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import sun.applet.Main;
-import sun.plugin.util.UserProfile;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.*;
 
 @Service
@@ -39,35 +36,6 @@ public class MainPageServiceImpl implements MainPageService {
         List<User> users = userService.getAllByCompanyId(id);
         List<Storage> storages = storageService.getAllByCompanyId(id);
         List<PurchaseSalesProductsListModel> fullList = salesService.getFullList(userName, date);
-//        List<ProductsModel> listBefore = new ArrayList<>();
-//        for (int i = 0; i < storages.size(); i++) {
-//            String name = storages.get(i).getProduct().getName();
-//            Integer count = storages.get(i).getCount();
-//            Integer totalPrice = storages.get(i).getCost();
-//            listBefore.add(new ProductsModel(name, count, totalPrice));
-//        }
-//        for (int i = 0; i < listBefore.size(); i++) {
-//            boolean isContains = false;
-//            int k = 0;
-//            for (int j = 0; j < products.size(); j++) {
-//                if (!listBefore.get(i).getProductName().equals(products.get(j).getName())) {
-//                    isContains = false;
-//                    k++;
-//                }
-//                else {
-//                    isContains = true;
-//                }
-//            }
-//            if (isContains == false) {
-//                listBefore.add(new ProductsModel(products.get(k).getName(), 0, 0));
-//            }
-//            k = 0;
-//            isContains = false;
-//        }
-//        Set<ProductsModel> listMiddle = new HashSet<>();
-//        listBefore.forEach(x -> listMiddle.add(x));
-//        List<ProductsModel> list = new ArrayList<>();
-//        listMiddle.forEach(x -> list.add(x));
         List<ProductsModel> list = getProducts(userName);
 
         List<Sales> salesServiceAll = salesService.getAllById(id);
@@ -91,7 +59,6 @@ public class MainPageServiceImpl implements MainPageService {
                     Integer middlePrice = priceSales - priceStorage;
                     Integer earningPrice = middlePrice * salesServiceAll.get(i).getCount();
 
-                    Long check = salesServiceAll.get(i).getProduct().getId();
                     String prodName = fullList.get(i).getProductName();
                     earning.setProductName(prodName);
                     earning.setEarning(earningPrice);
@@ -107,17 +74,8 @@ public class MainPageServiceImpl implements MainPageService {
             uspm.setTotalEarningsByDay(sum);
             list1.add(uspm);
         }
-//        if (list1.size() == 0){
-//            List<UsersProfitModel> profList = new ArrayList<>();
-////            List<Earning> earnings = new ArrayList<>();
-////            earnings.add(new Earning("example", 0, LocalDateTime.now()));
-////            profList.add(new UsersProfitModel(userService.getByLogin(userName).getUserFullName(),earnings, 0));
-//            MainPageModel mainPageModel = new MainPageModel(profList, list);
-//            return mainPageModel;
-//        } else {
             MainPageModel mainPageModel = new MainPageModel(list1, list);
             return mainPageModel;
-//        }
     }
 
     public List<ProductsModel> getProducts(String userName){
@@ -144,11 +102,6 @@ public class MainPageServiceImpl implements MainPageService {
                 list.add(new ProductsModel(x.getName(), 0, 0,imageService.getImagePath(x.getName(),x.getCompany().getId())));
             }
         }
-//        if (list.size() == 0){
-//            list.add(new ProductsModel("example", 1, 500));
-//            list.add(new ProductsModel("пример", 2, 300));
-//            return list;
-//        }
         return list;
     }
 

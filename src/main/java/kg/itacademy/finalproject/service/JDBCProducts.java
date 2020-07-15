@@ -1,6 +1,5 @@
 package kg.itacademy.finalproject.service;
 
-import kg.itacademy.finalproject.entity.TelegramRegistration;
 import kg.itacademy.finalproject.model.TelegramProduct;
 
 import java.sql.*;
@@ -8,26 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JDBCProducts {
-    DbWorker dbWorker = new DbWorker();
-
-
-//    public void  selectFromUsers(String key) {
-//        String SQL = "select news_name, contant from news where id = " + id;
-//        try (
-//                Connection conn = connect();
-//                Statement stmt = conn.createStatement();
-//                ResultSet rs = stmt.executeQuery(SQL))
-//        {
-//            System.out.println("news  ||            contant");
-//            while (rs.next())
-//            {
-//                System.out.println(rs.getString(1) + " || " + rs.getString(2));
-//            }
-//
-//        } catch (SQLException ex) {
-//            System.out.println(ex.getMessage());
-//        }
-//    }
+     private DbWorker dbWorker = new DbWorker();
 
     public Integer selectFromUsers(String key) {
         String SQL = "select company_id from users where telegram_key = ?";

@@ -14,10 +14,6 @@ import javax.persistence.ManyToOne;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Image extends EntitySuperclass{
-//    @Column(name = "format", nullable = false)
-//    private String format;
-//    @Column(name = "url", nullable = false)
-//    private String url;
     @Column(name = "name", nullable = false)
     private String name;
     @Column(name = "path")

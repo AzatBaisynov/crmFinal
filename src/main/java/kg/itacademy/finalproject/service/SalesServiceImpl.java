@@ -70,7 +70,6 @@ public class SalesServiceImpl implements SalesService {
     @Override
     public String createByModel(String userName, PurchaseSalesCreateModel pSCM) {
         User user = userService.getByLogin(userName);
-        Long companyId = user.getCompany().getId();
         Company company = user.getCompany();
         Sales sales = new Sales();
         Product product = productService.getByNameAndCompanyId(pSCM.getProduct(), company.getId());

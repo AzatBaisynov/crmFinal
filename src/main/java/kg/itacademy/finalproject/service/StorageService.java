@@ -2,10 +2,8 @@ package kg.itacademy.finalproject.service;
 
 import kg.itacademy.finalproject.entity.Product;
 import kg.itacademy.finalproject.entity.Storage;
-import kg.itacademy.finalproject.model.PurchaseSalesProductsListModel;
 import kg.itacademy.finalproject.model.StorageModel;
 
-import java.time.LocalDate;
 import java.util.List;
 
 public interface StorageService {

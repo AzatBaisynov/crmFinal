@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JDBCStorage {
-    DbWorker dbWorker = new DbWorker();
+    private DbWorker dbWorker = new DbWorker();
 
     public List<StorageModel> selectFromUsers(Integer key, String date) {
         String SQL = "select total_cost, p_count, unit_price, product_id from p_storage where company_id = ?;";

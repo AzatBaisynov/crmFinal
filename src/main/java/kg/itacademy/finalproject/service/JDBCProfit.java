@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Set;
 
 public class JDBCProfit {
-    DbWorker dbWorker = new DbWorker();
+    private DbWorker dbWorker = new DbWorker();
 
     public List<JDBCSalesModel> getModel(Integer companyId, String date){
         List<JDBCRevenueModel> list = selectFromUsers(companyId, date);

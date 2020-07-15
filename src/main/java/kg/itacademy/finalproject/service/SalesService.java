@@ -3,7 +3,6 @@ package kg.itacademy.finalproject.service;
 import kg.itacademy.finalproject.entity.Sales;
 import kg.itacademy.finalproject.model.PurchaseSalesCreateModel;
 import kg.itacademy.finalproject.model.PurchaseSalesProductsListModel;
-import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;

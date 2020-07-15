@@ -1,7 +1,6 @@
 package kg.itacademy.finalproject.service;
 
 import kg.itacademy.finalproject.entity.Company;
-import kg.itacademy.finalproject.entity.User;
 import kg.itacademy.finalproject.repo.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

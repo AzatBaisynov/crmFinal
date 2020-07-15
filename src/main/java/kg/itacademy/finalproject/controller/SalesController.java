@@ -2,7 +2,6 @@ package kg.itacademy.finalproject.controller;
 
 import kg.itacademy.finalproject.entity.Sales;
 import kg.itacademy.finalproject.entity.Storage;
-import kg.itacademy.finalproject.model.PurchaseReturn;
 import kg.itacademy.finalproject.model.PurchaseSalesCreateModel;
 import kg.itacademy.finalproject.model.PurchaseSalesProductsListModel;
 import kg.itacademy.finalproject.model.SalesReturn;

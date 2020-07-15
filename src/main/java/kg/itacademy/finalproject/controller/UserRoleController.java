@@ -3,7 +3,6 @@ package kg.itacademy.finalproject.controller;
 import kg.itacademy.finalproject.entity.UserRole;
 import kg.itacademy.finalproject.service.UserRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

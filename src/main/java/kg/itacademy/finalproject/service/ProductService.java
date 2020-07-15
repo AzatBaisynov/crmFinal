@@ -3,7 +3,6 @@ package kg.itacademy.finalproject.service;
 import kg.itacademy.finalproject.entity.Product;
 import kg.itacademy.finalproject.model.ProductsModel;
 
-
 import java.util.List;
 
 public interface ProductService {

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JDBCPurchases {
-    DbWorker dbWorker = new DbWorker();
+    private DbWorker dbWorker = new DbWorker();
 
             public List<PurchaseSalesProductsListModel> selectFromUsers(Integer key, String date) {
                 String SQL = "select date_created, p_count, unit_price, product_id, user_id from purchases where company_id = ?;";

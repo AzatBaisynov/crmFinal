@@ -32,47 +32,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.httpBasic().and().authorizeRequests()
                 .antMatchers(HttpMethod.POST, "/login/auth").permitAll()
                 .antMatchers(HttpMethod.POST, "/login/registration/user").hasRole("ADMIN")
-//
-//                .antMatchers(HttpMethod.POST, "/purchase").hasRole("ADMIN")
-//                .antMatchers(HttpMethod.POST, "/purchase/create").hasRole("ADMIN")
-//                .antMatchers(HttpMethod.GET, "/purchase/list").hasRole("ADMIN")
-//                .antMatchers(HttpMethod.GET, "/purchase/list").hasRole("USER")
-//                .antMatchers(HttpMethod.GET, "/purchase/create").hasRole("USER")
-//                .antMatchers(HttpMethod.POST, "/purchase").hasRole("USER")
-//                .antMatchers(HttpMethod.POST, "/purchase/list").hasAnyRole()
-//                .antMatchers(HttpMethod.GET, "/purchase/list").hasAnyRole()
-//
-//                .antMatchers(HttpMethod.POST, "/storage").hasRole("ADMIN")
-//                .antMatchers(HttpMethod.POST, "/storage/create").hasRole("ADMIN")
-//                .antMatchers(HttpMethod.GET, "/storage/list").hasRole("ADMIN")
-//                .antMatchers(HttpMethod.POST, "/storage").hasRole("USER")
-//                .antMatchers(HttpMethod.POST, "/storage/create").hasRole("USER")
-//                .antMatchers(HttpMethod.GET, "/storage/list").hasRole("USER")
-//                .antMatchers(HttpMethod.POST, "/storage/list").hasAnyRole()
-//                .antMatchers(HttpMethod.GET, "/storage/list").hasAnyRole()
-//                .antMatchers(HttpMethod.POST, "/storage").hasAnyRole()
-//                .antMatchers(HttpMethod.GET, "/storage").hasAnyRole()
-//
-//
-//                .antMatchers(HttpMethod.POST, "/sales").hasRole("ADMIN")
-//                .antMatchers(HttpMethod.GET, "/sales/list").hasRole("ADMIN")
-//                .antMatchers(HttpMethod.POST, "/sales/create").hasRole("ADMIN")
-//                .antMatchers(HttpMethod.POST, "/storage").hasRole("USER")
-//                .antMatchers(HttpMethod.POST, "/storage/create").hasRole("USER")
-//                .antMatchers(HttpMethod.GET, "/storage/list").hasRole("USER")
-//
-//                .antMatchers(HttpMethod.GET, "/image").hasRole("ADMIN")
-//                .antMatchers(HttpMethod.POST, "/image").hasRole("ADMIN")
-//                .antMatchers(HttpMethod.GET, "/image").hasRole("USER")
-//                .antMatchers(HttpMethod.POST, "/image").hasRole("USER")
-
-//                .antMatchers(HttpMethod.PUT, "/user").hasRole("USER")
-//                .antMatchers(HttpMethod.DELETE, "/test").hasRole("ADMIN")
-//                .antMatchers(HttpMethod.PUT," /user/admin").hasRole("ADMIN")
-//                .antMatchers(HttpMethod.PUT, "/services").hasRole("ADMIN")
-//                .antMatchers(HttpMethod.DELETE, "/services").hasRole("ADMIN")
-//                .antMatchers(HttpMethod.GET, "/services").hasRole("ADMIN")
-//                .antMatchers(HttpMethod.POST, "/services").hasRole("ADMIN")
                 .and().csrf().disable();
     }
 

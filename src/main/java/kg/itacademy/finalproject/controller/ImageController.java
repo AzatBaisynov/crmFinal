@@ -10,7 +10,6 @@ import java.security.Principal;
 import java.util.List;
 
 @RestController
-//@CrossOrigin("http://localhost:3000")
 @RequestMapping("/image")
 public class ImageController {
     @Autowired

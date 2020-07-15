@@ -1,7 +1,6 @@
 package kg.itacademy.finalproject.controller;
 
 import kg.itacademy.finalproject.entity.Purchase;
-import kg.itacademy.finalproject.entity.User;
 import kg.itacademy.finalproject.model.PurchaseReturn;
 import kg.itacademy.finalproject.model.PurchaseSalesCreateModel;
 import kg.itacademy.finalproject.model.PurchaseSalesProductsListModel;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 import java.security.Principal;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/purchase")
